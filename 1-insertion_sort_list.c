@@ -1,7 +1,7 @@
 #include "sort.h"
 /**
  * insertion_sort_list - sorts a doubly linked list using the Insertion sort
- * @list: list of integers 
+ * @list: double pointer to the head of the list 
  */
 void insertion_sort_list(listint_t **list)
 {
@@ -15,26 +15,24 @@ void insertion_sort_list(listint_t **list)
 	while (cur != NULL)
 	{
 		key_node = cur;
-		key = cur->b;
+		key = cur->n;
 		prev = cur->prev;
 
-		while (prev != NULL && prev->b > key)
+		while (prev != NULL && prev->n > key)
 		{
-			prev->next->b = prev->b;
-			key_node = prev;
+			prev->next->prev = prev->prev;
+			if (prev->next != NULL)
+				prev->prev->next = prev->next;
+			prev->next = key_node;
+			prev->prev = key_node->prev;
+			key_node->prev = prev;
+			if (prev->prev == NULL)
+				*list = prev;
+			else
+				prev->prev->next = prev;
+			print_list(*list);
 			prev = prev->prev;
 		}
-		if (prev == NULL)
-		{
-			(*list)->b = key;
-			*list = key_node;
-		}
-		else
-		{
-			prev->next->b = key;
-			key_node->n = prev->b;
-		}
 		cur = cur->next;
-		print_list(*list);
 	}
 }
