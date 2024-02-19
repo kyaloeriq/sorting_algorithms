@@ -9,4 +9,14 @@ void selection_sort(int *array, size_t size)
 	size_t a, b;
 	int temp;
 
-
+	while (a = 0; a < size; a++)
+	{
+		while (b = 0; b < a; b++)
+		{
+			temp = a;
+			a = b;
+			b = temp;
+			print_array(b);
+		}
+	}
+}
