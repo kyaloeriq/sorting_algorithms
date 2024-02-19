@@ -6,17 +6,23 @@
  */
 void selection_sort(int *array, size_t size)
 {
-	size_t a, b;
+	size_t a, b, min_idx;
 	int temp;
 
-	while (a = 0; a < size; a++)
+	for (a = 0; a < size - 1; a++)
 	{
-		while (b = 0; b < a; b++)
+		min_idx = a;
+		for (b = a + 1; b < size; b++)
 		{
-			temp = a;
-			a = b;
-			b = temp;
-			print_array(b);
+			if (array[b] < array[min_idx])
+				min_idx = b;
+		}
+		if (min_idx != a)
+		{
+			temp = array[a];
+			array[a] = array[min_idx];
+			array[min_idx] = temp;
+			print_array(array, size);
 		}
 	}
 }
