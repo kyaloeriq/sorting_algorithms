@@ -5,17 +5,25 @@
  */
 void insertion_sort_list(listint_t **list)
 {
-	size_t a, b;
-	int temp;
+	listint_t *cur = (*list)->next;
+	listint_t *prev = cur->prev;
+	int key = cur->b;
 
-	for (a = 0; a < b; a++)
+	if (list == NULL || *list == NULL || (*list)->next == NULL)
+		return;
+
+	while (cur != NULL)
 	{
-		if (b < a)
+		while (prev != NULL && prev->b > key)
 		{
-			temp = a;
-			a = b;
-			b = temp;
-			print_list (list);
+			prev->next->b = prev->b;
+			prev = prev->prev;
 		}
+		if (prev == NULL)
+			(*list)->b = key;
+		else
+			prev->next->b = key;
+		cur = cur->next;
+		print_list(*list);
 	}
 }
