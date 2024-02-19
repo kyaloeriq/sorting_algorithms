@@ -1,12 +1,12 @@
 #include "sort.h"
 /**
  * insertion_sort_list - sorts a doubly linked list using the Insertion sort
- * @list: double pointer to the head of the list 
+ * @list: double pointer to the head of the list
  */
 void insertion_sort_list(listint_t **list)
 {
 	listint_t *cur, *prev, *key_node;
-	int key;
+
 	cur = (*list)->next;
 
 	if (list == NULL || *list == NULL || (*list)->next == NULL)
@@ -15,23 +15,26 @@ void insertion_sort_list(listint_t **list)
 	while (cur != NULL)
 	{
 		key_node = cur;
-		key = cur->n;
 		prev = cur->prev;
 
-		while (prev != NULL && prev->n > key)
+		while (prev != NULL && prev->n > key_node->n)
 		{
-			prev->next->prev = prev->prev;
-			if (prev->next != NULL)
-				prev->prev->next = prev->next;
-			prev->next = key_node;
-			prev->prev = key_node->prev;
-			key_node->prev = prev;
-			if (prev->prev == NULL)
-				*list = prev;
-			else
-				prev->prev->next = prev;
+			if (prev->prev != NULL)
+				prev->prev->next = key_node;
+			if (key_node->next != NULL)
+				key_node->next->prev = prev;
+
+			prev->next = key_node->next;
+			key_node->prev = prev->prev;
+			prev->prev = key_node;
+			key_node->next = prev;
+
+			if (key_node->prev == NULL)
+				*list = key_node;
+	
 			print_list(*list);
-			prev = prev->prev;
+			
+			prev = key_node->prev;
 		}
 		cur = cur->next;
 	}
