@@ -8,8 +8,6 @@ void quick_sort(int *array, size_t size)
 {
 	int pvt = array[size - 1];
 	int temp;
-	size_t a, b;
-
 	size_t a = 0;
 	size_t b;
 
@@ -29,7 +27,6 @@ void quick_sort(int *array, size_t size)
 		}
 	}
 	/*swapping array[a] and pivot*/
-	array[size - 1] = array[a];
 	array[a] = pvt;
 	print_array(array, size);
 	/*Recursive calls for the two partitions*/
