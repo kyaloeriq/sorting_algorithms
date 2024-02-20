@@ -25,7 +25,7 @@ void quick_sort(int *array, size_t size)
 			array[a] = array[b];
 			array[b] = temp;
 			print_array(array, size);
-			i++;
+			a++;
 		}
 	}
 	/*swapping array[a] and pivot*/
