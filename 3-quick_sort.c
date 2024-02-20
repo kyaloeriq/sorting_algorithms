@@ -34,4 +34,4 @@ void quick_sort(int *array, size_t size)
 	/*Recursive calls for the two partitions*/
 	quick_sort(array, a);
 	quick_sort(array + a + 1, size - a - 1);
-}	
+}
