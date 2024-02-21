@@ -39,3 +39,29 @@ void cocktail_sort_list(listint_t **list)
 		}
 	} while (swppd);
 }
+void swap_nodes(listint_t **left, listint_t **right, listint_t **list)
+{
+	listint_t *temp;
+	
+	temp = *left;
+	*left = *right;
+	*right = temp;
+
+	if ((*left)->prev == NULL)
+		*list = *left;
+	if ((*right)->next == NULL)
+		*list = *right;
+
+	if ((*left)->prev != NULL)
+		(*left)->prev->next = *left;
+	if ((*right)->next != NULL)
+		(*right)->next->prev = *right;
+
+	temp = (*left)->prev;
+	(*left)->prev = (*right)->prev;
+	(*right)->prev = temp;
+
+	temp = (*left)->next;
+	(*left)->next = (*right)->next;
+	(*right)->next = temp;
+}
