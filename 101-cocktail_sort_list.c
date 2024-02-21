@@ -43,11 +43,14 @@ void cocktail_sort_list(listint_t **list)
 }
 /**
  * swap_nodes - swaps nodes
+ * @left: left
+ * @right: right
+ * @list: list
  */
 void swap_nodes(listint_t **left, listint_t **right, listint_t **list)
 {
 	listint_t *temp;
-	
+
 	temp = *left;
 	*left = *right;
 	*right = temp;
