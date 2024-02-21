@@ -9,7 +9,13 @@ void shell_sort(int *array, size_t size)
 	size_t gap, a, b;
 	int temp;
 
-	for (gap = size / 2; gap > 0; gap /= 2)
+	/* Calculates the initial gap using Knuth's sequence */
+	gap = 1;
+	while (gap < size / 3)
+		gap = gap * 3 + 1;
+
+	/* Starts with the largest gap and work down to a gap of 1 */
+	for (; gap > 0; gap /= 3)
 	{
 		for (a = gap; a < size; a++)
 		{
