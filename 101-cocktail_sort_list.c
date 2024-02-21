@@ -1,4 +1,7 @@
 #include "sort.h"
+
+void swap_nodes(listint_t **left, listint_t **right, listint_t **list);
+
 /**
  * cocktail_sort_list - sorts a doubly linked list using Cocktail shaker sort
  * @list: list of integers
@@ -28,7 +31,7 @@ void cocktail_sort_list(listint_t **list)
 		if (!swppd)
 			break;
 
-		for (currt = currt->prev; currt->prev != NULL; currt = currt->prev)
+		for (; currt->prev != NULL; currt = currt->prev)
 		{
 			if (currt->n < currt->prev->n)
 			{
