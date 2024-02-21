@@ -1,3 +1,4 @@
+#include "sort.h"
 /**
  * shell_sort - the Shell sort algorithm, using the Knuth sequence
  * @array: array of integers
@@ -5,7 +6,8 @@
  */
 void shell_sort(int *array, size_t size)
 {
-	int gap, a, b, temp;
+	size_t gap, a, b;
+	int temp;
 
 	for (gap = size / 2; gap > 0; gap /= 2)
 	{
@@ -18,6 +20,6 @@ void shell_sort(int *array, size_t size)
 			}
 			array[b] = temp;
 		}
-		print _array(array, size);
+		print_array(array, size);
 	}
 }
