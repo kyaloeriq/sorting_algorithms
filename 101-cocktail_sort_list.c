@@ -17,8 +17,7 @@ void cocktail_sort_list(listint_t **list)
 	if (list == NULL || *list == NULL)
 		return;
 
-	do
-	{
+	do {
 		for (currt = *list; currt->next != NULL; currt = currt->next)
 		{
 			if (currt->n > currt->next->n)
@@ -42,6 +41,9 @@ void cocktail_sort_list(listint_t **list)
 		}
 	} while (swppd);
 }
+/**
+ * swap_nodes - swaps nodes
+ */
 void swap_nodes(listint_t **left, listint_t **right, listint_t **list)
 {
 	listint_t *temp;
