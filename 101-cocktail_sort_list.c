@@ -31,7 +31,7 @@ void cocktail_sort_list(listint_t **list)
 		if (!swppd)
 			break;
 
-		for (; currt->prev != NULL; currt = currt->prev)
+		for (; currt != NULL && currt->prev != NULL; currt = currt->prev)
 		{
 			if (currt->n < currt->prev->n)
 			{
