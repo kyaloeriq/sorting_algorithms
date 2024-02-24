@@ -30,6 +30,9 @@ void counting_sort(int *array, size_t size)
 	/*Store count of each element*/
 	for (i = 0; i < size; i++)
 		cnt[array[i]]++;
+	/*Print the counting array*/
+	for (i = 0; i < size; i++)
+		printf("%lu: %d\n", (unsigned long)i, cnt[i]);
 	/*Modify the count array such that each element at each index stores the sum of previous counts*/
 	for (i = 1; i <= (size_t)max; i++)
 		cnt[i] += cnt[i - 1];
