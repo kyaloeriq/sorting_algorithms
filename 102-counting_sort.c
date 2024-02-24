@@ -8,14 +8,14 @@
  */
 void counting_sort(int *array, size_t size)
 {
+	size_t i;
+	int *cnt, *output;
+	int max = array[0];
+
 	if (size <= 1)
 		return;
 
-	int i, *cnt, *output, max;
-	size_t i, input;
-
 	/*Find the maximum element in the array*/
-	max = array[0];
 	for (i = 1; i < size; i++)
 	{
 		if (array[i] > max)
@@ -25,13 +25,13 @@ void counting_sort(int *array, size_t size)
 	cnt = (int *)malloc((max + 1) * sizeof(int));
 	if (cnt == NULL)
 		return;
-	for (i = 0; i <= max; i++)
+	for (i = 0; i < size; i++)
 		cnt[i] = 0;
 	/*Store count of each element*/
 	for (i = 0; i < size; i++)
 		cnt[array[i]]++;
 	/*Modify the count array such that each element at each index stores the sum of previous counts*/
-	for (i = 1; i <= max; i++)
+	for (i = 1; i <= (size_t)max; i++)
 		cnt[i] += cnt[i - 1];
 	/*Output array to store the sorted array*/
 	output = (int *)malloc(size * sizeof(int));
@@ -41,7 +41,7 @@ void counting_sort(int *array, size_t size)
 		return;
 	}
 	/*Build the output array*/
-	for (i = size - 1; i >= 0; i--)
+	for (i = size - 1; i < size; i--)
 	{
 		output[cnt[array[i]] - 1] = array[i];
 			cnt[array[i]]--;
