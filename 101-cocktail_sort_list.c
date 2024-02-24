@@ -13,7 +13,6 @@ void cocktail_sort_list(listint_t **list)
 
 	swppd = 0;
 
-
 	if (list == NULL || *list == NULL)
 		return;
 
@@ -29,6 +28,8 @@ void cocktail_sort_list(listint_t **list)
 		}
 		if (!swppd)
 			break;
+		for (currt = *list; currt->next != NULL; currt = currt->next)
+			;
 
 		for (; currt != NULL && currt->prev != NULL; currt = currt->prev)
 		{
